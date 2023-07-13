@@ -1,5 +1,6 @@
 import conectarDB from "./config/conexion.js";
 import dotenv from "dotenv";
+import cors from "cors";
 import express from "express";
 import ciclistasRouter from "./routes/ciclistas.routes.js";
 import equiposRouter from "./routes/equipos.routes.js";
@@ -9,6 +10,7 @@ import premiosRouter from "./routes/premios.routes.js";
 const app = express();
 app.use(express.json());
 dotenv.config();
+app.use(cors());
 
 const port = process.env.PORT;
 
