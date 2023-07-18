@@ -1,4 +1,4 @@
-import { getAll } from "./api.js";
+import { getAll, post } from "./api.js";
 
 addEventListener("DOMContentLoaded", cargarCiclistas);
 const contenedor = document.querySelector('#contenedor-cards');
@@ -8,6 +8,7 @@ async function cargarCiclistas(){
     console.log(datos);
 }
 
+/* get */
 const ciclistas = await getAll();
 ciclistas.forEach(ciclista => {
     contenedor.innerHTML += `
@@ -41,3 +42,6 @@ ciclistas.forEach(ciclista => {
           </div>
     `
 });
+
+/* post */
+const ingresar = document.querySelector("#insertar");
