@@ -27,6 +27,11 @@ const mySchema = mongoose.Schema(
         type: Number,
         required: true,
         trim: true
+    },
+    equipo: {
+        type: String,
+        required: true,
+        trim: true
     }
 }, 
 

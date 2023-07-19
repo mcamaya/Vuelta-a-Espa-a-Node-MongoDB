@@ -6,7 +6,7 @@ const get = async (req, res) => {
 }
 
 const getOne = async (req, res) => {
-    const dbUnicoRegistro = await Equipo.find({_id:req.params.id});
+    const dbUnicoRegistro = await Equipo.findOne({_id:req.params.id});
     res.json(dbUnicoRegistro);
 }
 

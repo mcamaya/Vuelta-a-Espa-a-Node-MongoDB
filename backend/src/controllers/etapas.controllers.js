@@ -6,7 +6,7 @@ const get = async (req, res) => {
 }
 
 const getOne = async (req, res) => {
-    const dbUnicoRegistro = await Etapa.find({_id:req.params.id});
+    const dbUnicoRegistro = await Etapa.findOne({_id:req.params.id});
     res.json(dbUnicoRegistro);
 }
 
