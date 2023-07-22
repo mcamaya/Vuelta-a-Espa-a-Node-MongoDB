@@ -33,8 +33,8 @@ const deleteOne = async (req, res) => {
 const update = async (req, res) => {
     try {
         const actualizar = await Equipo.findOne({_id:req.params.id});
-        if (req.body.nombre) {
-            actualizar.nombre = req.body.nombre;
+        if (req.body.equipo) {
+            actualizar.equipo = req.body.equipo;
         }
         if(req.body.entrenador) {
             actualizar.entrenador = req.body.entrenador;

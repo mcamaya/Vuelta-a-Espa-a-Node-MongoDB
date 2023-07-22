@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const mySchema = mongoose.Schema(
 
 {
-    nombre: {
+    equipo: {
         type: String,
         required: true,
         trim: true
