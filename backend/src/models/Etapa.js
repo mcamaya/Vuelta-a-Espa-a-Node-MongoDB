@@ -14,7 +14,7 @@ const mySchema = mongoose.Schema(
         trim: true
     },
     recorrido: {
-        type: Number,
+        type: String,
         required: true,
         trim: true
     }

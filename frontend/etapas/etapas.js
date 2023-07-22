@@ -9,24 +9,20 @@ async function cargarRegistros() {
   
   
   dbRegistros.forEach(rgt => {
-    let {_id, equipo, entrenador, patrocinador, pais} = rgt;
+    let {_id, fecha, lugar, recorrido} = rgt;
     container.innerHTML += `
         <div class="card p-2">
         <div class="d-flex">
-          <h3>Nombre:</h3>
-          <h6 class="ms-3">${equipo}</h6>
+          <h3>Fecha:</h3>
+          <h6 class="ms-3">${fecha}</h6>
         </div>
         <div class="d-flex">
-          <h3>Entrenador:</h3>
-          <h6 class="ms-3">${entrenador}</h6>
+          <h3>Lugar:</h3>
+          <h6 class="ms-3">${lugar}</h6>
         </div>
         <div class="d-flex">
-          <h3>Patrocinador:</h3>
-          <h6 class="ms-3">${patrocinador}</h6>
-        </div>
-        <div class="d-flex">
-          <h3>Pais:</h3>
-          <h6 class="ms-3">${pais}</h6>
+          <h3>Recorrido:</h3>
+          <h6 class="ms-3">${recorrido}</h6>
         </div>
 
         <div class="d-flex align-items-between mt-5">
@@ -44,19 +40,18 @@ const btnRegistrar = document.querySelector('#btnRegistrar');
 
 btnRegistrar.addEventListener("click", insertarData);
 
-async function insertarData() {
+async function insertarData(e) {
   
-  let equipo = document.querySelector('#equipo').value;
-  let entrenador = document.querySelector('#entrenador').value;
-  let pais = document.querySelector('#pais').value;
-  let patrocinador = document.querySelector('#patrocinador').value;
-
+e.preventDefault();
+  let fecha = document.querySelector('#fecha').value;
+  let lugar = document.querySelector('#lugar').value;
+  let recorrido = document.querySelector('#recorrido').value;
+ 
   let nuevoRegistro = {
-    equipo,
-    entrenador,
-    pais,
-    patrocinador
-    }
+    fecha,
+    lugar,
+    recorrido
+  }
 
     console.log(await postData(nuevoRegistro));
 }
@@ -84,13 +79,12 @@ function eliminarRegistros(e){
 const updateModal = document.querySelector('#updateModal');
 async function launchModalUpt(e){
   let idUpdate = e.target.getAttribute("idupdate");
-  let {_id, equipo, entrenador, patrocinador, pais} = await getOne(idUpdate)
+  let {_id, fecha, lugar, recorrido} = await getOne(idUpdate)
 
   document.querySelector('#idUpt').value = _id;
-  document.querySelector('#equipoUpt').value = equipo;
-  document.querySelector('#entrenadorUpt').value = entrenador;
-  document.querySelector('#patrocinadorUpt').value = patrocinador;
-  document.querySelector('#paisUpt').value = pais;
+  document.querySelector('#fechaUpt').value = fecha;
+  document.querySelector('#lugarUpt').value = lugar;
+  document.querySelector('#recorridoUpt').value = recorrido;
 }
 
 updateModal.addEventListener("submit", actualizarRegistros)
@@ -98,16 +92,14 @@ updateModal.addEventListener("submit", actualizarRegistros)
 async function actualizarRegistros() {
 
   let id = document.querySelector('#idUpt').value;
-  let equipo = document.querySelector('#equipoUpt').value;
-  let entrenador = document.querySelector('#entrenadorUpt').value;
-  let pais = document.querySelector('#paisUpt').value; 
-  let patrocinador = document.querySelector('#patrocinadorUpt').value;
+  let fecha = document.querySelector('#fechaUpt').value;
+  let lugar = document.querySelector('#lugarUpt').value;
+  let recorrido = document.querySelector('#recorridoUpt').value; 
 
   let actualizado = {
-    equipo,
-    entrenador,
-    pais,
-    patrocinador
+    fecha,
+    lugar,
+    recorrido
   }
 
     await updateData(id, actualizado);
